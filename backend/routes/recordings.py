@@ -9,7 +9,7 @@ import logging
 from datetime import datetime
 
 from database import get_db
-from routes_auth import get_current_user
+from routes.auth import get_current_user
 from services.whisper_service import whisper_service
 from schemas import RecordingCreate, RecordingResponse, RecordingListResponse, FileUploadResponse, TranscriptResponse
 from models import User, Recording, TranscriptionStatus, AuditLog

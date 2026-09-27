@@ -6,16 +6,17 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 from contextlib import asynccontextmanager
 import logging
 import os
 
 from config import settings
 from database import init_db, get_db
-from routes_auth import router as auth_router
-from routes_recordings import router as recordings_router
-from routes_templates import router as templates_router
-from routes_summaries import router as summaries_router
+from routes.auth import router as auth_router
+from routes.recordings import router as recordings_router
+from routes.templates import router as templates_router
+from routes.summaries import router as summaries_router
 
 # Configure logging
 logging.basicConfig(
@@ -40,11 +41,10 @@ async def lifespan(app: FastAPI):
 
         # Seed default templates if needed
         from database import SessionLocal
-        from services_template import template_service
+        from services.template import template_service
         db = SessionLocal()
         try:
-            admin_id = "system-admin"  # System admin for seeding
-            count = template_service.seed_default_templates(db, admin_id)
+            count = template_service.seed_default_templates(db, admin_user_id=None)
             if count > 0:
                 logger.info(f"Seeded {count} default templates")
         finally:
@@ -90,7 +90,7 @@ async def health_check(db: Session = Depends(get_db)):
     """Health check endpoint - verify API and database connectivity"""
     try:
         # Try a simple database query
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
         return {
             "status": "healthy",
             "api_version": "3.0.0",

@@ -40,7 +40,7 @@ export const App: React.FC = () => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout, verifyToken }}>
       <div className="min-h-screen bg-gray-50">
         <Navigation user={user} onLogout={logout} />
 

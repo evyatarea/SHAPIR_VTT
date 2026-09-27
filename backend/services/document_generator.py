@@ -24,6 +24,7 @@ try:
     from reportlab.lib.pagesizes import letter, A4
     from reportlab.pdfgen import canvas
     from reportlab.lib.units import inch
+    from reportlab.lib.colors import HexColor as RGBColor
     from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
@@ -79,7 +80,7 @@ class DocumentGenerator:
                 'CustomTitle',
                 parent=styles['Heading1'],
                 fontSize=24,
-                textColor=RGBColor(0, 0, 0),
+                textColor=RGBColor('#000000'),
                 spaceAfter=30,
                 alignment=TA_CENTER,
             )
@@ -88,7 +89,7 @@ class DocumentGenerator:
                 'CustomHeading',
                 parent=styles['Heading2'],
                 fontSize=14,
-                textColor=RGBColor(31, 78, 121),
+                textColor=RGBColor('#1F4E79'),
                 spaceAfter=12,
                 spaceBefore=12,
             )

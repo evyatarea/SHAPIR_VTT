@@ -118,6 +118,9 @@ class Template(Base):
     # Output configuration
     output_format = Column(String(20), nullable=False)  # txt, pdf, docx, xlsx
 
+    # Ownership
+    created_by = Column(String(36), ForeignKey("users.id"), nullable=True)
+
     # Status
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)

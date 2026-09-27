@@ -8,8 +8,8 @@ import logging
 
 from database import get_db
 from models import User
-from routes_auth import get_current_user
-from services_template import template_service
+from routes.auth import get_current_user
+from services.template import template_service
 from schemas import TemplateResponse, ErrorResponse
 
 logger = logging.getLogger(__name__)
@@ -30,11 +30,6 @@ def get_admin_user(current_user: User = Depends(get_current_user)) -> User:
             detail="Admin role required"
         )
     return current_user
-
-
-class TemplateResponse(dict):
-    """Template response schema"""
-    pass
 
 
 @router.get("/")

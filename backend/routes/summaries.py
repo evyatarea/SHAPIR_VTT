@@ -11,9 +11,9 @@ import io
 
 from database import get_db
 from models import User, Recording, Summary
-from routes_auth import get_current_user
-from services_gpt import gpt_service
-from services_document_generator import document_generator
+from routes.auth import get_current_user
+from services.gpt import gpt_service
+from services.document_generator import document_generator
 from schemas import ErrorResponse
 
 logger = logging.getLogger(__name__)
