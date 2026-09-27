@@ -1,0 +1,133 @@
+/**
+ * Tailwind CSS Imports
+ * Global styles for Shapir Recordings Platform
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* HTML5 Audio Player Styling */
+audio {
+  width: 100%;
+  outline: none;
+}
+
+/* RTL Support for Hebrew */
+html[dir="rtl"] .flex {
+  direction: rtl;
+}
+
+/* Loading Animation */
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-blue {
+  animation: pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Form Styling */
+input, textarea, select {
+  @apply transition duration-200;
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply ring-2 ring-blue-500 ring-opacity-50;
+}
+
+button {
+  @apply transition duration-200;
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+/* Card Shadows */
+.card {
+  @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow;
+}
+
+.card-lg {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply badge bg-green-100 text-green-800;
+}
+
+.badge-error {
+  @apply badge bg-red-100 text-red-800;
+}
+
+.badge-warning {
+  @apply badge bg-yellow-100 text-yellow-800;
+}
+
+.badge-info {
+  @apply badge bg-blue-100 text-blue-800;
+}
+
+/* Grid Layouts */
+.grid-cols-auto {
+  @apply grid auto-cols-max gap-4;
+}
+
+/* Text Selection */
+::selection {
+  @apply bg-blue-500 text-white;
+}
+
+::-moz-selection {
+  @apply bg-blue-500 text-white;
+}
+
+/* Placeholder Styling */
+::placeholder {
+  @apply text-gray-400;
+}
+
+/* Link Styling */
+a {
+  @apply transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-blue-600;
+}
