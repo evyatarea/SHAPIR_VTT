@@ -1,0 +1,2 @@
+# Minimal deps for scripts/transcribe_test_local.py - no OpenAI key, no DB
+faster-whisper==1.2.1
